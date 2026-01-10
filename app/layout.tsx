@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Inter, Playfair_Display, Syne } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
+const syne = Syne({ subsets: ["latin"], variable: "--font-syne", weight: ["400", "700", "800"] });
 
-import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import SystemStatusBar from "@/components/ui/SystemStatusBar";
 import { CartProvider } from "@/lib/context/CartContext";
 import CartDrawer from "@/components/cart/CartDrawer";
 import SmoothScroll from "@/components/layout/SmoothScroll";
@@ -26,13 +27,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${playfair.variable}`}>
+      <body className={`${inter.variable} ${playfair.variable} ${syne.variable}`}>
         <CartProvider>
           <SmoothScroll />
           <Preloader />
           <CustomCursor />
           <NoiseOverlay />
-          <Header />
+          <SystemStatusBar />
           <CartDrawer />
           {children}
           <Footer />

@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import FadeIn from '@/components/ui/FadeIn';
 import RevealText from '@/components/ui/RevealText';
+import DecoderText from '@/components/ui/DecoderText';
 import styles from './Hero.module.css';
 
 export default function Hero() {
@@ -22,18 +23,20 @@ export default function Hero() {
 
             <div className={styles.content}>
                 <FadeIn delay={0.2}>
-                    <RevealText text="COLLECTION 01" className={styles.subtitle} />
+                    <div className={styles.subtitle}>
+                        <DecoderText text="WE DON'T SELL TAGS." delay={0.5} />
+                    </div>
                 </FadeIn>
                 <div style={{ marginBottom: 'var(--spacing-lg)' }}>
-                    <RevealText text="GRAVITY IS A CHOICE" className={styles.title} wordMode delay={0.4} />
+                    <RevealText text="MANEKIN" className={styles.title} wordMode delay={0.4} />
                 </div>
                 <FadeIn delay={0.6}>
                     <div className={styles.actions}>
-                        <Link href="/shop" className={styles.primaryCta}>
-                            SHOP NOW
+                        <Link href="/shop/mens" className={styles.primaryCta}>
+                            MENS
                         </Link>
-                        <Link href="/about" className={styles.secondaryCta}>
-                            MANIFESTO
+                        <Link href="/shop/womens" className={styles.secondaryCta}>
+                            WOMENS
                         </Link>
                     </div>
                 </FadeIn>
