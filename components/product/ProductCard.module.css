@@ -1,0 +1,64 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    cursor: pointer;
+}
+
+.imageWrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-sm);
+    /* Sharp corners */
+}
+
+.image {
+    object-fit: cover;
+    transition: transform 0.4s cubic-bezier(0.2, 1, 0.3, 1), filter 0.4s ease;
+    filter: brightness(0.9);
+}
+
+.card:hover .image {
+    transform: scale(1.02);
+    filter: brightness(1);
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: var(--spacing-xs);
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.name {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.category {
+    font-size: 0.7rem;
+    color: var(--accent-raw);
+}
+
+.price {
+    font-family: var(--font-body);
+    font-weight: 500;
+    color: var(--text-primary);
+}

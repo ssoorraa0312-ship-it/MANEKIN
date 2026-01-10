@@ -1,0 +1,16 @@
+.addToCart {
+    padding: var(--spacing-md) var(--spacing-xl);
+    background: var(--text-primary);
+    color: var(--bg-primary);
+    border: none;
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    width: fit-content;
+}
+
+.addToCart:hover {
+    opacity: 0.9;
+}

@@ -1,0 +1,138 @@
+.hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-primary);
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.image {
+    object-fit: cover;
+    animation: zoomSlow 20s infinite alternate;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom,
+            rgba(5, 5, 5, 0.3),
+            rgba(5, 5, 5, 0.6));
+    z-index: 1;
+}
+
+.content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    max-width: 900px;
+    padding: 0 var(--spacing-md);
+    margin-top: var(--spacing-4xl);
+    /* Visual balance */
+}
+
+.subtitle {
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: 0.4em;
+    font-size: 0.85rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.title {
+    font-family: var(--font-heading);
+    /* Playfair for that YSL elegance */
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    line-height: 0.95;
+    margin-bottom: var(--spacing-lg);
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    /* subtle texture */
+    background: linear-gradient(180deg, #fff 0%, #ccc 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.actions {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    margin-top: var(--spacing-lg);
+}
+
+.primaryCta {
+    display: inline-block;
+    padding: 18px 48px;
+    background: var(--text-primary);
+    color: var(--bg-primary);
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    border: 1px solid var(--text-primary);
+}
+
+.primaryCta:hover {
+    transform: translateY(-2px);
+    background: transparent;
+    color: var(--text-primary);
+}
+
+.secondaryCta {
+    display: inline-block;
+    padding: 18px 48px;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.secondaryCta:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--text-primary);
+}
+
+@keyframes zoomSlow {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.1);
+    }
+}
+
+@media (max-width: 768px) {
+    .actions {
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

@@ -1,0 +1,40 @@
+.gridSection {
+    padding: var(--spacing-2xl) var(--spacing-md);
+    background: var(--bg-primary);
+    max-width: 1800px;
+    margin: 0 auto;
+}
+
+.heading {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    margin-bottom: var(--spacing-xl);
+    text-align: left;
+    /* Yeezy style: quiet left alignment or center */
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: var(--spacing-md);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: var(--spacing-sm);
+    row-gap: var(--spacing-xl);
+}
+
+@media (max-width: 1200px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: var(--spacing-xs);
+        row-gap: var(--spacing-lg);
+    }
+}
