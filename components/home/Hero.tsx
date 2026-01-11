@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Link from 'next/link';
+
 import FadeIn from '@/components/ui/FadeIn';
 import RevealText from '@/components/ui/RevealText';
 import DecoderText from '@/components/ui/DecoderText';
@@ -30,16 +30,7 @@ export default function Hero() {
                 <div style={{ marginBottom: 'var(--spacing-lg)' }}>
                     <RevealText text="MANEKIN" className={styles.title} wordMode delay={0.4} />
                 </div>
-                <FadeIn delay={0.6}>
-                    <div className={styles.actions}>
-                        <Link href="/shop/mens" className={styles.primaryCta}>
-                            MENS
-                        </Link>
-                        <Link href="/shop/womens" className={styles.secondaryCta}>
-                            WOMENS
-                        </Link>
-                    </div>
-                </FadeIn>
+
             </div>
         </section>
     );

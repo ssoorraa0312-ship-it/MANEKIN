@@ -1,21 +1,35 @@
 .gridSection {
-    padding: var(--spacing-2xl) var(--spacing-md);
+    padding: var(--spacing-4xl) 0;
     background: var(--bg-primary);
     max-width: 1800px;
     margin: 0 auto;
 }
 
+.headingWrapper {
+    margin-bottom: var(--spacing-3xl);
+    /* Increased spacing */
+    height: 6rem;
+    /* Reserve height to prevent layout shift during animation */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    /* For absolute positioning of sort control */
+    width: 100%;
+}
+
 .heading {
-    font-family: var(--font-heading);
-    font-size: 2rem;
-    margin-bottom: var(--spacing-xl);
-    text-align: left;
-    /* Yeezy style: quiet left alignment or center */
-    font-weight: 400;
-    letter-spacing: -0.02em;
+    font-family: var(--font-inter);
+    /* Changed to Inter */
+    font-size: 1.5rem;
+    /* Slightly smaller for clean look */
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    /* Wide tracking */
+    color: var(--text-primary);
+    text-align: center;
     text-transform: uppercase;
-    border-bottom: 1px solid var(--border-subtle);
-    padding-bottom: var(--spacing-md);
 }
 
 .grid {

@@ -1,0 +1,319 @@
+/* Container to center everything cleanly without conflicting transforms on the motion elements */
+.container {
+    position: fixed;
+    bottom: 2rem;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    pointer-events: none;
+    /* Let clicks pass through container area */
+}
+
+.trigger {
+    width: 3.5rem;
+    height: 3.5rem;
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    cursor: pointer;
+    pointer-events: auto;
+    padding: 0;
+    transition: transform 0.3s ease;
+}
+
+.trigger:hover {
+    transform: scale(1.1);
+}
+
+/* Neon Star Wrapper */
+.starWrapper {
+    position: relative;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Hover effect on the wrapper */
+.trigger:hover .starWrapper {
+    transform: scale(1.15);
+}
+
+/* Base SVG Style */
+.triangleLarge,
+.triangleSmall {
+    position: absolute;
+    overflow: visible;
+    color: #ffffff;
+    /* stroke/fill color via currentColor */
+    transition: all 0.3s ease;
+}
+
+/* Large Triangle */
+.triangleLarge {
+    width: 2.8rem;
+    /* Large size */
+    height: 2.8rem;
+    stroke-width: 1.5px;
+
+    /* Glow around lines */
+    filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
+
+    /* Rotation: Clockwise */
+    animation: rotateLarge 12s infinite linear;
+}
+
+/* Small Triangle - Increased Size */
+.triangleSmall {
+    width: 2.0rem;
+    /* Increased from 1.75rem */
+    height: 2.0rem;
+
+    /* Glow for solid shape */
+    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+
+    /* Rotation: Counter-Clockwise + Inverted Start */
+    animation: rotateSmall 8s infinite linear;
+}
+
+@keyframes rotateLarge {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotateSmall {
+    from {
+        transform: rotate(180deg);
+    }
+
+    /* Start inverted */
+    to {
+        transform: rotate(-180deg);
+    }
+
+    /* Rotate counter-clockwise */
+}
+
+/* Removed prism/hexagram animations */
+
+/* Panel expands from the trigger's position */
+/* Panel expands from the trigger's position */
+.pannel {
+    background: rgba(5, 5, 5, 0.9);
+    backdrop-filter: blur(25px);
+    /* Removed default border to use pseudo-element border trace */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    /* Sharp corners as requested */
+    padding: 0.5rem 1.5rem;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    white-space: nowrap;
+    pointer-events: auto;
+    position: relative;
+}
+
+/* Border Trace Effect */
+.pannel::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    /* Hugs the border */
+    padding: 1px;
+    /* Thickness of trace */
+    border-radius: 4px;
+    background: conic-gradient(from 0deg,
+            transparent 0%,
+            transparent 80%,
+            #ffffff 100%);
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+
+    /* Animation */
+    animation: borderTrace 4s linear infinite;
+    pointer-events: none;
+    z-index: 10;
+}
+
+@keyframes borderTrace {
+    from {
+        --angle: 0deg;
+        transform: rotate(0deg);
+    }
+
+    /* This rotates the entire gradient mask? No, rotating gradient itself is better but complex without @property. 
+    Simple rotation works for conic if centered. But panel is rectangular.
+    Rotating a conic gradient on a rectangle looks okay if mask handles it.
+    Actually, simpler approach: Animated border-image or moving background element.
+    Let's try the simple rotation of the psuedo-element if it's circular? No it acts as border.
+    Correct approach for rect: 'Clip-path' based or 'Offset' based?
+    Let's try a simpler 'Shinning Edge' with linear gradient moving across.
+    User said "Edge tracing".
+    Let's use the layout-safe method: Rotating conic gradient inside a slightly larger box masked to border area.
+    */
+    /* Actually with 'inset: -1px' and mask, we are just showing the background. 
+       If we rotate the PSEUDO element, the border rotates. 
+       But the shape is rectangular (4px radius). Rotating a rectangle inside a mask...
+       Wait, if we rotate the pseudo, the border shape rotates too unless we separate shape from gradient.
+       Correct way: Pseudo is absolute, full size. Background is the gradient. 
+       We animate the BACKGROUND POSITION or use @property for angle.
+       Since this is standard CSS, let's use a large oversized pseudo rotating behind a mask?
+       Or simpler: linear-gradient moving.
+       Let's try the "Shine" effect moving around.
+    */
+    /* Alternative: linear-gradient sweep */
+}
+
+/* Let's redo .pannel::before for a "Sweep" effect which is safer and cleaner */
+.pannel::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent) border-box;
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    background-size: 200% 100%;
+    animation: borderShine 3s infinite linear;
+    pointer-events: none;
+    z-index: 11;
+}
+
+@keyframes borderShine {
+    0% {
+        background-position: 100% 0;
+    }
+
+    100% {
+        background-position: -100% 0;
+    }
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    /* Tighter gap */
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+.label {
+    font-family: var(--font-inter);
+    font-size: 0.55rem;
+    /* Smaller label */
+    letter-spacing: 0.2em;
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: 600;
+    margin-left: 6px;
+}
+
+.options {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 99px;
+    padding: 2px;
+}
+
+.option {
+    background: transparent;
+    border: none;
+    color: var(--color-text-muted);
+    font-family: var(--font-inter);
+    font-size: 0.7rem;
+    /* Tiny bit smaller */
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    padding: 0.4rem 0.8rem;
+    /* Reduced padding */
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 99px;
+    min-width: 70px;
+    position: relative;
+    /* For Pseudo elements if needed */
+}
+
+.option:hover {
+    color: var(--color-white);
+}
+
+/* Active State Styles - More Obvious */
+.option.selected {
+    background: var(--color-white);
+    color: var(--color-black);
+    font-weight: 700;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+    /* Glow for active */
+    transform: scale(1.05);
+    /* Slight pop */
+}
+
+.separatorVertical {
+    width: 1px;
+    height: 32px;
+    /* Shorter separator */
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.divider {
+    width: 1px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 0 2px;
+}
+
+.closeAction {
+    margin-left: 0.5rem;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
+    transition: background 0.2s ease;
+}
+
+.closeAction:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.closeIcon {
+    font-family: var(--font-inter);
+    font-size: 1rem;
+    line-height: 1;
+    color: var(--color-text-muted);
+    margin-top: -2px;
+}

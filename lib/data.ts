@@ -5,6 +5,7 @@ export interface Product {
     category: string;
     image: string;
     stylingFee?: number;
+    gender: 'mens' | 'womens' | 'unisex';
 }
 
 export const products: Product[] = [
@@ -15,6 +16,7 @@ export const products: Product[] = [
         category: "Outerwear",
         image: "/archive_01.png",
         stylingFee: 12000,
+        gender: 'unisex',
     },
     {
         id: "2",
@@ -23,6 +25,7 @@ export const products: Product[] = [
         category: "Outerwear",
         image: "/archive_02.png",
         stylingFee: 8500,
+        gender: 'mens',
     },
     {
         id: "3",
@@ -31,6 +34,7 @@ export const products: Product[] = [
         category: "Tops",
         image: "/archive_03.png",
         stylingFee: 4500,
+        gender: 'unisex',
     },
     {
         id: "4",
@@ -39,6 +43,7 @@ export const products: Product[] = [
         category: "Outerwear",
         image: "/archive_04.png",
         stylingFee: 6800,
+        gender: 'womens',
     },
     {
         id: "5",
@@ -47,6 +52,7 @@ export const products: Product[] = [
         category: "Setups",
         image: "/archive_05.png",
         stylingFee: 9200,
+        gender: 'mens',
     },
     {
         id: "6",
@@ -55,6 +61,7 @@ export const products: Product[] = [
         category: "Footwear",
         image: "/archive_06.png",
         stylingFee: 11000,
+        gender: 'unisex',
     },
     {
         id: "7",
@@ -63,6 +70,7 @@ export const products: Product[] = [
         category: "Outerwear",
         image: "/archive_07.png",
         stylingFee: 15800,
+        gender: 'womens',
     },
     {
         id: "8",
@@ -71,37 +79,42 @@ export const products: Product[] = [
         category: "Tailoring",
         image: "/archive_08.png",
         stylingFee: 13500,
+        gender: 'mens',
     },
     {
         id: "9",
         name: "TRENCH_COAT_VOID",
         price: 125000,
         category: "Outerwear",
-        image: "/archive_01.png", // Reusing image as variant
+        image: "/archive_01.png",
         stylingFee: 12500,
+        gender: 'mens',
     },
     {
         id: "10",
         name: "TECH_BOMBER_OLIVE",
         price: 88000,
         category: "Outerwear",
-        image: "/archive_02.png", // Reusing image as variant
+        image: "/archive_02.png",
         stylingFee: 8800,
+        gender: 'womens',
     },
     {
         id: "11",
         name: "DISTRESSED_KNIT_CHARCOAL",
         price: 48000,
         category: "Tops",
-        image: "/archive_03.png", // Reusing image as variant
+        image: "/archive_03.png",
         stylingFee: 4800,
+        gender: 'mens',
     },
     {
         id: "12",
         name: "TANK_BOOTS_OXBLOOD",
         price: 115000,
         category: "Footwear",
-        image: "/archive_06.png", // Reusing image as variant
+        image: "/archive_06.png",
         stylingFee: 11500,
+        gender: 'womens',
     },
 ];
