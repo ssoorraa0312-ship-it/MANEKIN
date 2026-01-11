@@ -316,3 +316,42 @@
     color: var(--color-text-muted);
     margin-top: -2px;
 }
+
+@media (max-width: 640px) {
+    .container {
+        /* Ensure it sits above the home indicator safely */
+        bottom: max(1.5rem, env(safe-area-inset-bottom) + 0.5rem);
+    }
+
+    .pannel {
+        padding: 0.4rem 0.8rem;
+        max-width: 95vw;
+        /* Prevent overflow off-screen */
+    }
+
+    .content {
+        gap: 0.5rem;
+        /* Tighter layout */
+    }
+
+    .label {
+        display: none;
+        /* Hide labels to save space */
+    }
+
+    .option {
+        padding: 0.35rem 0.6rem;
+        font-size: 0.65rem;
+        min-width: unset;
+        /* Allow shrinking */
+    }
+
+    .separatorVertical {
+        height: 24px;
+        margin: 0 2px;
+    }
+
+    .closeAction {
+        margin-left: 0.2rem;
+    }
+}
