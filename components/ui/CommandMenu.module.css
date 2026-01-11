@@ -45,7 +45,8 @@
 
 /* Hover effect on the wrapper */
 .trigger:hover .starWrapper {
-    transform: scale(1.15);
+    transform: scale(1.35);
+    /* Increased from 1.15 */
 }
 
 /* Base SVG Style */
@@ -117,8 +118,8 @@
     backdrop-filter: blur(25px);
     /* Removed default border to use pseudo-element border trace */
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 4px;
-    /* Sharp corners as requested */
+    border-radius: 9999px;
+    /* Reverted to rounded pill shape */
     padding: 0.5rem 1.5rem;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
     display: flex;
@@ -165,9 +166,6 @@
     Simple rotation works for conic if centered. But panel is rectangular.
     Rotating a conic gradient on a rectangle looks okay if mask handles it.
     Actually, simpler approach: Animated border-image or moving background element.
-    Let's try the simple rotation of the psuedo-element if it's circular? No it acts as border.
-    Correct approach for rect: 'Clip-path' based or 'Offset' based?
-    Let's try a simpler 'Shinning Edge' with linear gradient moving across.
     User said "Edge tracing".
     Let's use the layout-safe method: Rotating conic gradient inside a slightly larger box masked to border area.
     */
@@ -192,7 +190,8 @@
     left: 0;
     right: 0;
     bottom: 0;
-    border-radius: 4px;
+    border-radius: 9999px;
+    /* Match panel radius */
     border: 1px solid transparent;
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent) border-box;
     -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);

@@ -32,10 +32,11 @@ export default function CommandMenu({
                     >
                         <motion.div
                             className={styles.starWrapper}
-                            initial={{ scale: 0, opacity: 0, rotate: -180 }}
+                            /* Clean Materialize: Scale up from small, no stretching */
+                            initial={{ scale: 0.5, opacity: 0, rotate: -90 }}
                             animate={{ scale: 1, opacity: 1, rotate: 0 }}
-                            exit={{ scale: 0, opacity: 0, rotate: 180 }} /* Sharp exit: shrink to zero */
-                            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }} /* Expo ease for sharpness */
+                            exit={{ scale: 0, opacity: 0, rotate: 90 }}
+                            transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
                         >
                             {/* Large Triangle: Hollow, Centered */}
                             <svg className={styles.triangleLarge} viewBox="-60 -60 120 120">
@@ -56,9 +57,10 @@ export default function CommandMenu({
                     >
                         <motion.div
                             className={styles.content}
-                            initial={{ opacity: 0, scale: 0.95, filter: "blur(4px)" }}
+                            /* Content Sharp Exit */
+                            initial={{ opacity: 0, scale: 0.9, filter: "blur(5px)" }}
                             animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                            exit={{ opacity: 0, scale: 0.95, filter: "blur(4px)" }}
+                            exit={{ opacity: 0, scale: 0.8, filter: "blur(0px)" }}
                             transition={{ duration: 0.2 }}
                         >
                             <div className={styles.section}>

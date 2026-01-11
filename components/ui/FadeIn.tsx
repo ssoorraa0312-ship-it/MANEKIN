@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from 'framer-motion';
+import { motion, Transition } from 'framer-motion';
 import { ReactNode } from 'react';
 
 interface FadeInProps {
@@ -9,7 +9,7 @@ interface FadeInProps {
     className?: string;
     direction?: 'up' | 'down' | 'left' | 'right';
     layout?: boolean;
-    transition?: any; // Allow custom transition
+    transition?: Transition; // Allow custom transition
 }
 
 export default function FadeIn({ children, delay = 0, className = '', direction = 'up', layout = false, transition }: FadeInProps) {
@@ -20,7 +20,7 @@ export default function FadeIn({ children, delay = 0, className = '', direction 
         right: { x: -20, y: 0 },
     };
 
-    const defaultTransition = { duration: 0.6, delay, ease: [0.21, 0.47, 0.32, 0.98] };
+    const defaultTransition: Transition = { duration: 0.6, delay, ease: [0.21, 0.47, 0.32, 0.98] as any };
 
     return (
         <motion.div

@@ -1,3 +1,5 @@
+"use client";
+
 import { products as allProducts } from '@/lib/data';
 import { Product } from '@/lib/data';
 import ProductCard from './ProductCard';
@@ -45,7 +47,7 @@ export default function ProductGrid({ items = allProducts, title = "Latest Arriv
                                     opacity: { duration: 0.4 },
                                     layout: { type: "spring", stiffness: 150, damping: 35, mass: 1.5 }, // Heavy spring
                                     y: { duration: 0.4 } // Regular enter animation
-                                }}
+                                } as any}
                             >
                                 <ProductCard product={product} />
                             </FadeIn>
