@@ -52,3 +52,10 @@
         row-gap: var(--spacing-lg);
     }
 }
+
+@media (max-width: 480px) {
+    .grid {
+        grid-template-columns: 1fr;
+        /* Single column for very small screens */
+    }
+}

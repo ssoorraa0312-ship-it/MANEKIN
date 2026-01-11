@@ -31,7 +31,7 @@ export default function Footer() {
                 </div>
             </div>
             <div className={styles.bottom}>
-                <h1 className={styles.logo}>AETHER APPAREL</h1>
+                {/* Logo removed as requested */}
                 <div className={styles.copyright}>
                     <span>&copy; 2026</span>
                     <span>EST. TOKYO</span>

@@ -161,10 +161,12 @@
     .grid {
         display: flex;
         flex-direction: column;
-        gap: var(--spacing-md);
+        gap: var(--spacing-sm);
+        /* Reduced gap */
     }
 
     .card {
-        min-height: 400px;
+        min-height: 300px;
+        /* Reduced min-height for mobile */
     }
 }

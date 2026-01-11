@@ -1,6 +1,6 @@
 .hero {
     position: relative;
-    height: 100vh;
+    height: 100dvh;
     width: 100%;
     overflow: hidden;
     display: flex;
@@ -61,7 +61,7 @@
 
 .title {
     font-family: var(--font-syne);
-    font-size: clamp(4rem, 15vw, 12rem);
+    font-size: clamp(2.5rem, 12vw, 12rem);
     font-weight: 800;
     line-height: 0.85;
     letter-spacing: -0.06em;
